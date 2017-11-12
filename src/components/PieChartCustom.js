@@ -4,7 +4,6 @@ import BaseChart from './BaseChart';
 export default class PieChartCustom extends BaseChart {
   constructor(el, props) {
     super(el, props);
-    this.formatPrice = null;
   }
   arcTween(a) {
     var interpolated = d3.interpolate(this.originalAngles, a);
@@ -71,9 +70,9 @@ export default class PieChartCustom extends BaseChart {
       .attr('y', this.legendRectSize - this.legendSpacing)
       .text(d => {
         const name = Object.keys(data)[d];
-        const value = data.formatPrice
-        ? d3.format('$,')(data[name])
-        : data[name];
+        const value = this.formatPrice
+          ? d3.format('$,')(data[name])
+          : data[name];
         return `${name} (${value})`;
       });
   }
@@ -151,8 +150,8 @@ export default class PieChartCustom extends BaseChart {
     }
   }
 
-  update(data) {
-    this.formatPrice = data.formatPrice;
+  update(data, props) {
+    this.formatPrice = props.chartType === 'face';
     this.path
       .data(this.pie(d3.entries(data)))
       .transition()
@@ -182,7 +181,7 @@ export default class PieChartCustom extends BaseChart {
         .attr('y', this.legendRectSize - this.legendSpacing)
         .text(d => {
           const name = Object.keys(data)[d];
-          const value = data.formatPrice
+          const value = this.formatPrice
             ? d3.format('$,')(data[name])
             : data[name];
 

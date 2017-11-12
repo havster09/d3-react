@@ -19,7 +19,6 @@ export const mockData = {
       'Smoking Offence': 87500,
       'Littering Offence': 17860,
       'Animal Offence': 22150,
-      'formatPrice': true
     }
   },
   2014: {
@@ -42,7 +41,6 @@ export const mockData = {
       'Smoking Offence': 100250,
       'Littering Offence': 29150,
       'Animal Offence': 25171,
-      'formatPrice': true
     }
   }
 };

@@ -62,6 +62,7 @@ exports[`class CbaChart extends _react.Component {
         _react2.default.createElement('div', { style: styles.toggleContainer, __source: { fileName: _jsxFileName, lineNumber: 76 }, __self: this },
           _react2.default.createElement(_Toggle2.default, {
             onToggle: this.handleUpdateChartType,
+            defaultToggled: this.props.chartType === 'face',
             label: \`Show \${labelValue} value\`,
             style: styles.toggle, __source: { fileName: _jsxFileName, lineNumber: 77 }, __self: this })),
 
@@ -69,10 +70,10 @@ exports[`class CbaChart extends _react.Component {
         _react2.default.createElement(_SelectField2.default, {
             floatingLabelText: 'Year',
             value: this.props.chartYear,
-            onChange: this.handleUpdateChartYear, __source: { fileName: _jsxFileName, lineNumber: 83 }, __self: this },
+            onChange: this.handleUpdateChartYear, __source: { fileName: _jsxFileName, lineNumber: 84 }, __self: this },
 
-          _react2.default.createElement(_MenuItem2.default, { value: '2013', primaryText: '2013', __source: { fileName: _jsxFileName, lineNumber: 88 }, __self: this }),
-          _react2.default.createElement(_MenuItem2.default, { value: '2014', primaryText: '2014', __source: { fileName: _jsxFileName, lineNumber: 89 }, __self: this })),
+          _react2.default.createElement(_MenuItem2.default, { value: '2013', primaryText: '2013', __source: { fileName: _jsxFileName, lineNumber: 89 }, __self: this }),
+          _react2.default.createElement(_MenuItem2.default, { value: '2014', primaryText: '2014', __source: { fileName: _jsxFileName, lineNumber: 90 }, __self: this })),
 
 
         _react2.default.createElement(_Chart2.default, {
@@ -82,7 +83,8 @@ exports[`class CbaChart extends _react.Component {
           height: 400,
           showTooltips: true,
           showLegend: true,
-          data: this.props.data[this.props.chartType], __source: { fileName: _jsxFileName, lineNumber: 92 }, __self: this })));
+          chartType: this.props.chartType,
+          data: this.props.data[this.props.chartType], __source: { fileName: _jsxFileName, lineNumber: 93 }, __self: this })));
 
 
 
@@ -161,7 +163,7 @@ ShallowWrapper {
           }
 >
           <Toggle
-                    defaultToggled={false}
+                    defaultToggled={true}
                     disabled={false}
                     label="Show face value"
                     labelPosition="left"
@@ -226,6 +228,7 @@ ShallowWrapper {
           />
 </SelectField>,
         <Chart
+          chartType="face"
           customChart={[Function]}
           data={
                     Object {
@@ -290,7 +293,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <Toggle
-            defaultToggled={false}
+            defaultToggled={true}
             disabled={false}
             label="Show face value"
             labelPosition="left"
@@ -311,7 +314,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "defaultToggled": false,
+            "defaultToggled": true,
             "disabled": false,
             "label": "Show face value",
             "labelPosition": "left",
@@ -443,6 +446,7 @@ ShallowWrapper {
         "key": undefined,
         "nodeType": "class",
         "props": Object {
+          "chartType": "face",
           "customChart": [Function],
           "data": Object {
             "Animal Offence": 25171,
@@ -491,7 +495,7 @@ ShallowWrapper {
             }
 >
             <Toggle
-                        defaultToggled={false}
+                        defaultToggled={true}
                         disabled={false}
                         label="Show face value"
                         labelPosition="left"
@@ -556,6 +560,7 @@ ShallowWrapper {
             />
 </SelectField>,
           <Chart
+            chartType="face"
             customChart={[Function]}
             data={
                         Object {
@@ -620,7 +625,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <Toggle
-              defaultToggled={false}
+              defaultToggled={true}
               disabled={false}
               label="Show face value"
               labelPosition="left"
@@ -641,7 +646,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "defaultToggled": false,
+              "defaultToggled": true,
               "disabled": false,
               "label": "Show face value",
               "labelPosition": "left",
@@ -773,6 +778,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
+            "chartType": "face",
             "customChart": [Function],
             "data": Object {
               "Animal Offence": 25171,

@@ -12,6 +12,7 @@ export default class BaseChart {
     this.el = el;
     this.props = props;
     this.color = this.getColor();
+    this.formatPrice = null;
 
     Object.keys(chartConfig).forEach(configKey => {
       if (this.props[configKey] !== undefined) {
