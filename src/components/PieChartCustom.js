@@ -4,7 +4,7 @@ import BaseChart from './BaseChart';
 export default class PieChartCustom extends BaseChart {
   constructor(el, props) {
     super(el, props);
-    this.formatPrice;
+    this.formatPrice = null;
   }
   arcTween(a) {
     var interpolated = d3.interpolate(this.originalAngles, a);
