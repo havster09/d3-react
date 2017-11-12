@@ -73,7 +73,7 @@ class CbaChart extends Component {
         <div style={styles.toggleContainer}>
           <Toggle
             onToggle={this.handleUpdateChartType}
-            defaultToggled={this.props.chartType === 'face'}
+            toggled={this.props.chartType === 'face'}
             label={`Show ${this.props.chartType === 'pn'
               ? 'face'
               : 'pn'} value`}

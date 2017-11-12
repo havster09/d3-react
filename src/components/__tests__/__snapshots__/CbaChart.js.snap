@@ -59,7 +59,7 @@ exports[`class CbaChart extends _react.Component {
         _react2.default.createElement('div', { style: styles.toggleContainer, __source: { fileName: _jsxFileName, lineNumber: 73 }, __self: this },
           _react2.default.createElement(_Toggle2.default, {
             onToggle: this.handleUpdateChartType,
-            defaultToggled: this.props.chartType === 'face',
+            toggled: this.props.chartType === 'face',
             label: \`Show \${this.props.chartType === 'pn' ?
             'face' :
             'pn'} value\`,
@@ -162,7 +162,7 @@ ShallowWrapper {
           }
 >
           <Toggle
-                    defaultToggled={true}
+                    defaultToggled={false}
                     disabled={false}
                     label="Show pn value"
                     labelPosition="left"
@@ -172,6 +172,7 @@ ShallowWrapper {
                                         "marginBottom": 16,
                                       }
                     }
+                    toggled={true}
           />
 </div>,
         <SelectField
@@ -292,7 +293,7 @@ ShallowWrapper {
         "nodeType": "host",
         "props": Object {
           "children": <Toggle
-            defaultToggled={true}
+            defaultToggled={false}
             disabled={false}
             label="Show pn value"
             labelPosition="left"
@@ -302,6 +303,7 @@ ShallowWrapper {
                                     "marginBottom": 16,
                                   }
             }
+            toggled={true}
 />,
           "style": Object {
             "maxWidth": 200,
@@ -313,7 +315,7 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "class",
           "props": Object {
-            "defaultToggled": true,
+            "defaultToggled": false,
             "disabled": false,
             "label": "Show pn value",
             "labelPosition": "left",
@@ -321,6 +323,7 @@ ShallowWrapper {
             "style": Object {
               "marginBottom": 16,
             },
+            "toggled": true,
           },
           "ref": null,
           "rendered": null,
@@ -494,7 +497,7 @@ ShallowWrapper {
             }
 >
             <Toggle
-                        defaultToggled={true}
+                        defaultToggled={false}
                         disabled={false}
                         label="Show pn value"
                         labelPosition="left"
@@ -504,6 +507,7 @@ ShallowWrapper {
                                                 "marginBottom": 16,
                                               }
                         }
+                        toggled={true}
             />
 </div>,
           <SelectField
@@ -624,7 +628,7 @@ ShallowWrapper {
           "nodeType": "host",
           "props": Object {
             "children": <Toggle
-              defaultToggled={true}
+              defaultToggled={false}
               disabled={false}
               label="Show pn value"
               labelPosition="left"
@@ -634,6 +638,7 @@ ShallowWrapper {
                                           "marginBottom": 16,
                                         }
               }
+              toggled={true}
 />,
             "style": Object {
               "maxWidth": 200,
@@ -645,7 +650,7 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "class",
             "props": Object {
-              "defaultToggled": true,
+              "defaultToggled": false,
               "disabled": false,
               "label": "Show pn value",
               "labelPosition": "left",
@@ -653,6 +658,7 @@ ShallowWrapper {
               "style": Object {
                 "marginBottom": 16,
               },
+              "toggled": true,
             },
             "ref": null,
             "rendered": null,
