@@ -47,13 +47,10 @@ class CbaChart extends Component {
   }
 
   render() {
-    const labelValue =
-      this.props.chartType === 'pn' ? 'face' : this.props.chartType;
-
     let totalArray = [];
 
     // need Object.values polyfill for jest
-    for(const key in this.props.data[this.props.chartType]) {
+    for (const key in this.props.data[this.props.chartType]) {
       totalArray.push(this.props.data[this.props.chartType][key]);
     }
 
@@ -77,7 +74,9 @@ class CbaChart extends Component {
           <Toggle
             onToggle={this.handleUpdateChartType}
             defaultToggled={this.props.chartType === 'face'}
-            label={`Show ${labelValue} value`}
+            label={`Show ${this.props.chartType === 'pn'
+              ? 'face'
+              : 'pn'} value`}
             style={styles.toggle}
           />
         </div>

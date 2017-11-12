@@ -33,9 +33,6 @@ exports[`class CbaChart extends _react.Component {
   }
 
   render() {
-    const labelValue =
-    this.props.chartType === 'pn' ? 'face' : this.props.chartType;
-
     let totalArray = [];
 
     // need Object.values polyfill for jest
@@ -52,28 +49,30 @@ exports[`class CbaChart extends _react.Component {
     }
 
     return (
-      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 69 }, __self: this },
-        _react2.default.createElement('h1', { __source: { fileName: _jsxFileName, lineNumber: 70 }, __self: this }, 'Infringements ',
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 66 }, __self: this },
+        _react2.default.createElement('h1', { __source: { fileName: _jsxFileName, lineNumber: 67 }, __self: this }, 'Infringements ',
           this.props.chartYear),
 
-        _react2.default.createElement('h2', { __source: { fileName: _jsxFileName, lineNumber: 73 }, __self: this }, 'Total: ',
+        _react2.default.createElement('h2', { __source: { fileName: _jsxFileName, lineNumber: 70 }, __self: this }, 'Total: ',
           totalValue),
 
-        _react2.default.createElement('div', { style: styles.toggleContainer, __source: { fileName: _jsxFileName, lineNumber: 76 }, __self: this },
+        _react2.default.createElement('div', { style: styles.toggleContainer, __source: { fileName: _jsxFileName, lineNumber: 73 }, __self: this },
           _react2.default.createElement(_Toggle2.default, {
             onToggle: this.handleUpdateChartType,
             defaultToggled: this.props.chartType === 'face',
-            label: \`Show \${labelValue} value\`,
-            style: styles.toggle, __source: { fileName: _jsxFileName, lineNumber: 77 }, __self: this })),
+            label: \`Show \${this.props.chartType === 'pn' ?
+            'face' :
+            'pn'} value\`,
+            style: styles.toggle, __source: { fileName: _jsxFileName, lineNumber: 74 }, __self: this })),
 
 
         _react2.default.createElement(_SelectField2.default, {
             floatingLabelText: 'Year',
             value: this.props.chartYear,
-            onChange: this.handleUpdateChartYear, __source: { fileName: _jsxFileName, lineNumber: 84 }, __self: this },
+            onChange: this.handleUpdateChartYear, __source: { fileName: _jsxFileName, lineNumber: 83 }, __self: this },
 
-          _react2.default.createElement(_MenuItem2.default, { value: '2013', primaryText: '2013', __source: { fileName: _jsxFileName, lineNumber: 89 }, __self: this }),
-          _react2.default.createElement(_MenuItem2.default, { value: '2014', primaryText: '2014', __source: { fileName: _jsxFileName, lineNumber: 90 }, __self: this })),
+          _react2.default.createElement(_MenuItem2.default, { value: '2013', primaryText: '2013', __source: { fileName: _jsxFileName, lineNumber: 88 }, __self: this }),
+          _react2.default.createElement(_MenuItem2.default, { value: '2014', primaryText: '2014', __source: { fileName: _jsxFileName, lineNumber: 89 }, __self: this })),
 
 
         _react2.default.createElement(_Chart2.default, {
@@ -84,7 +83,7 @@ exports[`class CbaChart extends _react.Component {
           showTooltips: true,
           showLegend: true,
           chartType: this.props.chartType,
-          data: this.props.data[this.props.chartType], __source: { fileName: _jsxFileName, lineNumber: 93 }, __self: this })));
+          data: this.props.data[this.props.chartType], __source: { fileName: _jsxFileName, lineNumber: 92 }, __self: this })));
 
 
 
@@ -165,7 +164,7 @@ ShallowWrapper {
           <Toggle
                     defaultToggled={true}
                     disabled={false}
-                    label="Show face value"
+                    label="Show pn value"
                     labelPosition="left"
                     onToggle={[Function]}
                     style={
@@ -295,7 +294,7 @@ ShallowWrapper {
           "children": <Toggle
             defaultToggled={true}
             disabled={false}
-            label="Show face value"
+            label="Show pn value"
             labelPosition="left"
             onToggle={[Function]}
             style={
@@ -316,7 +315,7 @@ ShallowWrapper {
           "props": Object {
             "defaultToggled": true,
             "disabled": false,
-            "label": "Show face value",
+            "label": "Show pn value",
             "labelPosition": "left",
             "onToggle": [Function],
             "style": Object {
@@ -497,7 +496,7 @@ ShallowWrapper {
             <Toggle
                         defaultToggled={true}
                         disabled={false}
-                        label="Show face value"
+                        label="Show pn value"
                         labelPosition="left"
                         onToggle={[Function]}
                         style={
@@ -627,7 +626,7 @@ ShallowWrapper {
             "children": <Toggle
               defaultToggled={true}
               disabled={false}
-              label="Show face value"
+              label="Show pn value"
               labelPosition="left"
               onToggle={[Function]}
               style={
@@ -648,7 +647,7 @@ ShallowWrapper {
             "props": Object {
               "defaultToggled": true,
               "disabled": false,
-              "label": "Show face value",
+              "label": "Show pn value",
               "labelPosition": "left",
               "onToggle": [Function],
               "style": Object {
