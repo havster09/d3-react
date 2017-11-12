@@ -21,9 +21,6 @@ const Home = props =>
         onUpdateChartType={props.updateChartType}
         synchChart={props.synchChart}
       />
-      <pre>
-        {JSON.stringify(props, null, 4)}
-      </pre>
     </Paper>
   </div>;
 
