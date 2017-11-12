@@ -1,0 +1,810 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`class CbaChart extends _react.Component {
+  constructor(props) {
+    super(props);
+    this.handleUpdateChartYear = this.handleUpdateChartYear.bind(this);
+    this.handleUpdateChartType = this.handleUpdateChartType.bind(this);
+    this.handleSynchChart = this.handleSynchChart.bind(this);
+  }
+
+  componentDidMount() {
+    window.onpopstate = () => {
+      this.handleSynchChart(this.props);
+    };
+    this.handleSynchChart(this.props);
+  }
+
+  handleSynchChart(props) {
+    if (props.match.params.chartYear) {
+      if (props.match.params.chartYear !== this.props.chartYear) {
+        this.props.synchChart(props.match.params.chartYear);
+      }
+    }
+  }
+
+  handleUpdateChartYear(event, index, value) {
+    this.props.onUpdateChartYear(value);
+  }
+
+  handleUpdateChartType(event, isInputChecked) {
+    const chartType = isInputChecked ? 'face' : 'pn';
+    this.props.onUpdateChartType(chartType);
+  }
+
+  render() {
+    const labelValue =
+    this.props.chartType === 'pn' ? 'face' : this.props.chartType;
+
+    let totalArray = [];
+
+    // need Object.values polyfill for jest
+    for (const key in this.props.data[this.props.chartType]) {
+      totalArray.push(this.props.data[this.props.chartType][key]);
+    }
+
+    let totalValue = totalArray.
+    filter(val => typeof val === 'number').
+    reduce((a, b) => a + b);
+
+    if (this.props.chartType === 'face') {
+      totalValue = '$' + totalValue.toLocaleString();
+    }
+
+    return (
+      _react2.default.createElement('div', { __source: { fileName: _jsxFileName, lineNumber: 69 }, __self: this },
+        _react2.default.createElement('h1', { __source: { fileName: _jsxFileName, lineNumber: 70 }, __self: this }, 'Infringements ',
+          this.props.chartYear),
+
+        _react2.default.createElement('h2', { __source: { fileName: _jsxFileName, lineNumber: 73 }, __self: this }, 'Total: ',
+          totalValue),
+
+        _react2.default.createElement('div', { style: styles.toggleContainer, __source: { fileName: _jsxFileName, lineNumber: 76 }, __self: this },
+          _react2.default.createElement(_Toggle2.default, {
+            onToggle: this.handleUpdateChartType,
+            label: \`Show \${labelValue} value\`,
+            style: styles.toggle, __source: { fileName: _jsxFileName, lineNumber: 77 }, __self: this })),
+
+
+        _react2.default.createElement(_SelectField2.default, {
+            floatingLabelText: 'Year',
+            value: this.props.chartYear,
+            onChange: this.handleUpdateChartYear, __source: { fileName: _jsxFileName, lineNumber: 83 }, __self: this },
+
+          _react2.default.createElement(_MenuItem2.default, { value: '2013', primaryText: '2013', __source: { fileName: _jsxFileName, lineNumber: 88 }, __self: this }),
+          _react2.default.createElement(_MenuItem2.default, { value: '2014', primaryText: '2014', __source: { fileName: _jsxFileName, lineNumber: 89 }, __self: this })),
+
+
+        _react2.default.createElement(_Chart2.default, {
+          type: 'custom',
+          customChart: _PieChartCustom2.default,
+          width: 400,
+          height: 400,
+          showTooltips: true,
+          showLegend: true,
+          data: this.props.data[this.props.chartType], __source: { fileName: _jsxFileName, lineNumber: 92 }, __self: this })));
+
+
+
+  }} matches snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <CbaChart
+    chartType="face"
+    chartYear="2014"
+    data={
+        Object {
+            "face": Object {
+              "Animal Offence": 25171,
+              "Compliance/Safety/Antisocial/Offensive behaviour": 7131850,
+              "Fare Evasion/False Information": 13038900,
+              "Feet on seat": 61700,
+              "Littering Offence": 29150,
+              "Parking offence": 9297100,
+              "Smoking Offence": 100250,
+              "Vehicle offence": 212132,
+              "formatPrice": true,
+            },
+            "pn": Object {
+              "Animal Offence": 123,
+              "Compliance/Safety/Antisocial/Offensive behaviour": 32189,
+              "Fare Evasion/False Information": 69705,
+              "Feet on seat": 617,
+              "Littering Offence": 167,
+              "Parking offence": 91891,
+              "Smoking Offence": 450,
+              "Vehicle offence": 781,
+            },
+          }
+    }
+    match={
+        Object {
+            "isExact": true,
+            "params": Object {
+              "chartYear": "2014",
+            },
+            "path": "/infringements/:chartYear?",
+            "url": "/infringements/2014",
+          }
+    }
+    onUpdateChartType={[Function]}
+    onUpdateChartYear={[Function]}
+    synchChart={[Function]}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h1>
+          Infringements 
+          2014
+</h1>,
+        <h2>
+          Total: 
+          $29,896,253
+</h2>,
+        <div
+          style={
+                    Object {
+                              "maxWidth": 200,
+                            }
+          }
+>
+          <Toggle
+                    defaultToggled={false}
+                    disabled={false}
+                    label="Show face value"
+                    labelPosition="left"
+                    onToggle={[Function]}
+                    style={
+                              Object {
+                                        "marginBottom": 16,
+                                      }
+                    }
+          />
+</div>,
+        <SelectField
+          autoWidth={false}
+          disabled={false}
+          floatingLabelText="Year"
+          fullWidth={false}
+          multiple={false}
+          onChange={[Function]}
+          value="2014"
+>
+          <MenuItem
+                    anchorOrigin={
+                              Object {
+                                        "horizontal": "right",
+                                        "vertical": "top",
+                                      }
+                    }
+                    checked={false}
+                    desktop={false}
+                    disabled={false}
+                    focusState="none"
+                    insetChildren={false}
+                    primaryText="2013"
+                    targetOrigin={
+                              Object {
+                                        "horizontal": "left",
+                                        "vertical": "top",
+                                      }
+                    }
+                    value="2013"
+          />
+          <MenuItem
+                    anchorOrigin={
+                              Object {
+                                        "horizontal": "right",
+                                        "vertical": "top",
+                                      }
+                    }
+                    checked={false}
+                    desktop={false}
+                    disabled={false}
+                    focusState="none"
+                    insetChildren={false}
+                    primaryText="2014"
+                    targetOrigin={
+                              Object {
+                                        "horizontal": "left",
+                                        "vertical": "top",
+                                      }
+                    }
+                    value="2014"
+          />
+</SelectField>,
+        <Chart
+          customChart={[Function]}
+          data={
+                    Object {
+                              "Animal Offence": 25171,
+                              "Compliance/Safety/Antisocial/Offensive behaviour": 7131850,
+                              "Fare Evasion/False Information": 13038900,
+                              "Feet on seat": 61700,
+                              "Littering Offence": 29150,
+                              "Parking offence": 9297100,
+                              "Smoking Offence": 100250,
+                              "Vehicle offence": 212132,
+                              "formatPrice": true,
+                            }
+          }
+          height={400}
+          showLegend={true}
+          showTooltips={true}
+          type="custom"
+          width={400}
+/>,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Infringements ",
+            "2014",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Infringements ",
+          "2014",
+        ],
+        "type": "h1",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            "Total: ",
+            "$29,896,253",
+          ],
+        },
+        "ref": null,
+        "rendered": Array [
+          "Total: ",
+          "$29,896,253",
+        ],
+        "type": "h2",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": <Toggle
+            defaultToggled={false}
+            disabled={false}
+            label="Show face value"
+            labelPosition="left"
+            onToggle={[Function]}
+            style={
+                        Object {
+                                    "marginBottom": 16,
+                                  }
+            }
+/>,
+          "style": Object {
+            "maxWidth": 200,
+          },
+        },
+        "ref": null,
+        "rendered": Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "defaultToggled": false,
+            "disabled": false,
+            "label": "Show face value",
+            "labelPosition": "left",
+            "onToggle": [Function],
+            "style": Object {
+              "marginBottom": 16,
+            },
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        "type": "div",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "autoWidth": false,
+          "children": Array [
+            <MenuItem
+              anchorOrigin={
+                            Object {
+                                          "horizontal": "right",
+                                          "vertical": "top",
+                                        }
+              }
+              checked={false}
+              desktop={false}
+              disabled={false}
+              focusState="none"
+              insetChildren={false}
+              primaryText="2013"
+              targetOrigin={
+                            Object {
+                                          "horizontal": "left",
+                                          "vertical": "top",
+                                        }
+              }
+              value="2013"
+/>,
+            <MenuItem
+              anchorOrigin={
+                            Object {
+                                          "horizontal": "right",
+                                          "vertical": "top",
+                                        }
+              }
+              checked={false}
+              desktop={false}
+              disabled={false}
+              focusState="none"
+              insetChildren={false}
+              primaryText="2014"
+              targetOrigin={
+                            Object {
+                                          "horizontal": "left",
+                                          "vertical": "top",
+                                        }
+              }
+              value="2014"
+/>,
+          ],
+          "disabled": false,
+          "floatingLabelText": "Year",
+          "fullWidth": false,
+          "multiple": false,
+          "onChange": [Function],
+          "value": "2014",
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "anchorOrigin": Object {
+                "horizontal": "right",
+                "vertical": "top",
+              },
+              "checked": false,
+              "desktop": false,
+              "disabled": false,
+              "focusState": "none",
+              "insetChildren": false,
+              "primaryText": "2013",
+              "targetOrigin": Object {
+                "horizontal": "left",
+                "vertical": "top",
+              },
+              "value": "2013",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "anchorOrigin": Object {
+                "horizontal": "right",
+                "vertical": "top",
+              },
+              "checked": false,
+              "desktop": false,
+              "disabled": false,
+              "focusState": "none",
+              "insetChildren": false,
+              "primaryText": "2014",
+              "targetOrigin": Object {
+                "horizontal": "left",
+                "vertical": "top",
+              },
+              "value": "2014",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "customChart": [Function],
+          "data": Object {
+            "Animal Offence": 25171,
+            "Compliance/Safety/Antisocial/Offensive behaviour": 7131850,
+            "Fare Evasion/False Information": 13038900,
+            "Feet on seat": 61700,
+            "Littering Offence": 29150,
+            "Parking offence": 9297100,
+            "Smoking Offence": 100250,
+            "Vehicle offence": 212132,
+            "formatPrice": true,
+          },
+          "height": 400,
+          "showLegend": true,
+          "showTooltips": true,
+          "type": "custom",
+          "width": 400,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h1>
+            Infringements 
+            2014
+</h1>,
+          <h2>
+            Total: 
+            $29,896,253
+</h2>,
+          <div
+            style={
+                        Object {
+                                    "maxWidth": 200,
+                                  }
+            }
+>
+            <Toggle
+                        defaultToggled={false}
+                        disabled={false}
+                        label="Show face value"
+                        labelPosition="left"
+                        onToggle={[Function]}
+                        style={
+                                    Object {
+                                                "marginBottom": 16,
+                                              }
+                        }
+            />
+</div>,
+          <SelectField
+            autoWidth={false}
+            disabled={false}
+            floatingLabelText="Year"
+            fullWidth={false}
+            multiple={false}
+            onChange={[Function]}
+            value="2014"
+>
+            <MenuItem
+                        anchorOrigin={
+                                    Object {
+                                                "horizontal": "right",
+                                                "vertical": "top",
+                                              }
+                        }
+                        checked={false}
+                        desktop={false}
+                        disabled={false}
+                        focusState="none"
+                        insetChildren={false}
+                        primaryText="2013"
+                        targetOrigin={
+                                    Object {
+                                                "horizontal": "left",
+                                                "vertical": "top",
+                                              }
+                        }
+                        value="2013"
+            />
+            <MenuItem
+                        anchorOrigin={
+                                    Object {
+                                                "horizontal": "right",
+                                                "vertical": "top",
+                                              }
+                        }
+                        checked={false}
+                        desktop={false}
+                        disabled={false}
+                        focusState="none"
+                        insetChildren={false}
+                        primaryText="2014"
+                        targetOrigin={
+                                    Object {
+                                                "horizontal": "left",
+                                                "vertical": "top",
+                                              }
+                        }
+                        value="2014"
+            />
+</SelectField>,
+          <Chart
+            customChart={[Function]}
+            data={
+                        Object {
+                                    "Animal Offence": 25171,
+                                    "Compliance/Safety/Antisocial/Offensive behaviour": 7131850,
+                                    "Fare Evasion/False Information": 13038900,
+                                    "Feet on seat": 61700,
+                                    "Littering Offence": 29150,
+                                    "Parking offence": 9297100,
+                                    "Smoking Offence": 100250,
+                                    "Vehicle offence": 212132,
+                                    "formatPrice": true,
+                                  }
+            }
+            height={400}
+            showLegend={true}
+            showTooltips={true}
+            type="custom"
+            width={400}
+/>,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Infringements ",
+              "2014",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Infringements ",
+            "2014",
+          ],
+          "type": "h1",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              "Total: ",
+              "$29,896,253",
+            ],
+          },
+          "ref": null,
+          "rendered": Array [
+            "Total: ",
+            "$29,896,253",
+          ],
+          "type": "h2",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": <Toggle
+              defaultToggled={false}
+              disabled={false}
+              label="Show face value"
+              labelPosition="left"
+              onToggle={[Function]}
+              style={
+                            Object {
+                                          "marginBottom": 16,
+                                        }
+              }
+/>,
+            "style": Object {
+              "maxWidth": 200,
+            },
+          },
+          "ref": null,
+          "rendered": Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "class",
+            "props": Object {
+              "defaultToggled": false,
+              "disabled": false,
+              "label": "Show face value",
+              "labelPosition": "left",
+              "onToggle": [Function],
+              "style": Object {
+                "marginBottom": 16,
+              },
+            },
+            "ref": null,
+            "rendered": null,
+            "type": [Function],
+          },
+          "type": "div",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "autoWidth": false,
+            "children": Array [
+              <MenuItem
+                anchorOrigin={
+                                Object {
+                                                "horizontal": "right",
+                                                "vertical": "top",
+                                              }
+                }
+                checked={false}
+                desktop={false}
+                disabled={false}
+                focusState="none"
+                insetChildren={false}
+                primaryText="2013"
+                targetOrigin={
+                                Object {
+                                                "horizontal": "left",
+                                                "vertical": "top",
+                                              }
+                }
+                value="2013"
+/>,
+              <MenuItem
+                anchorOrigin={
+                                Object {
+                                                "horizontal": "right",
+                                                "vertical": "top",
+                                              }
+                }
+                checked={false}
+                desktop={false}
+                disabled={false}
+                focusState="none"
+                insetChildren={false}
+                primaryText="2014"
+                targetOrigin={
+                                Object {
+                                                "horizontal": "left",
+                                                "vertical": "top",
+                                              }
+                }
+                value="2014"
+/>,
+            ],
+            "disabled": false,
+            "floatingLabelText": "Year",
+            "fullWidth": false,
+            "multiple": false,
+            "onChange": [Function],
+            "value": "2014",
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "anchorOrigin": Object {
+                  "horizontal": "right",
+                  "vertical": "top",
+                },
+                "checked": false,
+                "desktop": false,
+                "disabled": false,
+                "focusState": "none",
+                "insetChildren": false,
+                "primaryText": "2013",
+                "targetOrigin": Object {
+                  "horizontal": "left",
+                  "vertical": "top",
+                },
+                "value": "2013",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "class",
+              "props": Object {
+                "anchorOrigin": Object {
+                  "horizontal": "right",
+                  "vertical": "top",
+                },
+                "checked": false,
+                "desktop": false,
+                "disabled": false,
+                "focusState": "none",
+                "insetChildren": false,
+                "primaryText": "2014",
+                "targetOrigin": Object {
+                  "horizontal": "left",
+                  "vertical": "top",
+                },
+                "value": "2014",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": [Function],
+            },
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "customChart": [Function],
+            "data": Object {
+              "Animal Offence": 25171,
+              "Compliance/Safety/Antisocial/Offensive behaviour": 7131850,
+              "Fare Evasion/False Information": 13038900,
+              "Feet on seat": 61700,
+              "Littering Offence": 29150,
+              "Parking offence": 9297100,
+              "Smoking Offence": 100250,
+              "Vehicle offence": 212132,
+              "formatPrice": true,
+            },
+            "height": 400,
+            "showLegend": true,
+            "showTooltips": true,
+            "type": "custom",
+            "width": 400,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

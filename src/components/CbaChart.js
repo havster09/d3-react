@@ -49,7 +49,15 @@ class CbaChart extends Component {
   render() {
     const labelValue =
       this.props.chartType === 'pn' ? 'face' : this.props.chartType;
-    let totalValue = Object.values(this.props.data[this.props.chartType])
+
+    let totalArray = [];
+
+    // need Object.values polyfill for jest
+    for(const key in this.props.data[this.props.chartType]) {
+      totalArray.push(this.props.data[this.props.chartType][key]);
+    }
+
+    let totalValue = totalArray
       .filter(val => typeof val === 'number')
       .reduce((a, b) => a + b);
 

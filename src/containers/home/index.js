@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
 import { updateChartYear, updateChartType, synchChart } from '../../reducers/cbaChartReducer';
-import CbaChart from '../../component/CbaChart';
+import CbaChart from '../../components/CbaChart';
 
 const stylePaper = {
   padding: 20
