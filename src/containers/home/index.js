@@ -2,16 +2,22 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Paper from 'material-ui/Paper';
-import { updateChartYear, updateChartType, synchChart } from '../../reducers/cbaChartReducer';
+import {
+  updateChartYear,
+  updateChartType,
+  synchChart
+} from '../../reducers/cbaChartReducer';
 import CbaChart from '../../components/CbaChart';
 
-const stylePaper = {
-  padding: 20
+const styles = {
+  paper: {
+    padding: 20
+  }
 };
 
 const Home = props =>
   <div>
-    <Paper zDepth={1} style={stylePaper}>
+    <Paper zDepth={1} style={styles.paper}>
       <CbaChart
         data={props.cbaChart.data}
         match={props.match}
@@ -26,8 +32,8 @@ const Home = props =>
 
 const mapStateToProps = state => {
   return {
-    ...state,
-  }
+    ...state
+  };
 };
 
 const mapDispatchToProps = dispatch =>
