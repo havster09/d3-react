@@ -105,3 +105,5 @@ class CbaChart extends Component {
 }
 
 export default CbaChart;
+
+// todo add prop-types
