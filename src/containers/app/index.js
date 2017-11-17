@@ -1,14 +1,18 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Home from '../home';
+import Hoc from '../hoc';
 
 const App = () =>
   <MuiThemeProvider>
     <main>
-      <Route exact path="/" component={Home} />
-      <Route path="/infringements/:chartYear?" component={Home} />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/hoc" component={Hoc} />
+        <Route path="/infringements/:chartYear?" component={Home} />
+      </Switch>
     </main>
   </MuiThemeProvider>;
 
