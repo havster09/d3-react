@@ -14,32 +14,53 @@ class Stringifier extends React.Component {
     this.smMethod = this.smMethod.bind(this);
     this.state = {
       say: 'fu'
-    }
+    };
   }
 
   smMethod() {
+    console.log(this.props);
     setTimeout(() => {
-      this.setState({say: 'u2'});
-    }, 1000)
+      this.setState({ say: 'u2' });
+    }, 1000);
   }
 
   render() {
     return (
-     <div>
-      <pre>
-        {JSON.stringify(this.props)}
-      </pre>
-       <p>{this.state.say}</p>
-     </div>
+      <div>
+        <pre>
+          {JSON.stringify(this.props)}
+        </pre>
+        <p>
+          {this.state.say}
+        </p>
+        <input
+          name="name"
+          onChange={this.props.onChange}
+          value={this.props.value}
+        />
+      </div>
     );
   }
 }
 
 const ppHoc = WrappedComponent => {
   return class PP extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleNameChange = this.handleNameChange.bind(this);
+      this.state = { name: 'lindzey' };
+    }
+
     proc(wrappedComponentInstance) {
       wrappedComponentInstance.smMethod(); // call child methods by ref
     }
+
+    handleNameChange(event) {
+      this.setState({
+        name: event.target.value
+      });
+    }
+
     render() {
       // add extra props
       const commonProps = {
@@ -47,11 +68,31 @@ const ppHoc = WrappedComponent => {
         unique: Math.ceil(Math.random() * 1000)
       };
 
-      const props = Object.assign({}, this.props, commonProps, {
-        ref: this.proc.bind(this) // call child methods by ref
-      });
+      const newProps = {
+        name: {
+          value: this.state.name,
+          onChange: this.handleNameChange
+        }
+      };
 
-      return <WrappedComponent {...props} />;
+      const props = Object.assign(
+        {},
+        this.props,
+        commonProps,
+        newProps.name,
+        {
+          // ref: this.proc.bind(this) // call child methods by ref, breaks after onChange
+        }
+      );
+
+      return (
+       // add common layout
+       <ul>
+         <li>
+           <WrappedComponent {...props} />
+         </li>
+       </ul>
+      );
     }
   };
 };
