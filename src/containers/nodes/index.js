@@ -11,6 +11,8 @@ const styles = {
   }
 };
 
+const DummyLi = (props) => <li>{JSON.stringify(props.children)}</li>;
+
 class Spawner extends React.Component {
   static displayName = `Spawner`;
   static contextTypes = {
@@ -33,7 +35,7 @@ class Spawner extends React.Component {
     this.instantiatedEls = [];
     for(let i = 0; i < this.props.spawnNumber; i++) {
       this.instantiatedEls.push(React.createElement(
-        'li',
+        DummyLi,
         {key:i},
         i,
       ));
