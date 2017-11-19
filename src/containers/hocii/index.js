@@ -67,22 +67,18 @@ class Stringifier extends React.Component {
   }
 }
 
+function getDisplayName(WrappedComponent){
+  return WrappedComponent.displayName || WrappedComponent.name || 'Component';
+};
+
 const iiHoc = WrappedComponent => {
   return class Enhancer extends WrappedComponent {
-    static displayName = `IIHOC(${WrappedComponent.displayName ||
-      'Component'})`;
+    static displayName = `IIHOC(${getDisplayName(WrappedComponent)})`;
     constructor(props) {
       super(props);
       this.state = {
         value: 'vr mk'
       };
-      this.getDisplayName = this.getDisplayName.bind(this);
-    }
-
-    getDisplayName(WrappedComponent) {
-      return (
-        WrappedComponent.displayName || WrappedComponent.name || 'Component'
-      );
     }
 
     handleChange = event => {
@@ -131,6 +127,7 @@ const HocInput = iiHoc(SmInput);
 
 const HocFac = params => WrappedComponent => {
   return class HocWithParams extends React.Component {
+    static displayName = `HocWithParams(${getDisplayName(WrappedComponent)})`;
     constructor(props) {
       super(props);
       this.handleInvokeParamMethod = this.handleInvokeParamMethod.bind(this);

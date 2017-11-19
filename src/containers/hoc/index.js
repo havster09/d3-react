@@ -71,7 +71,7 @@ const ppHoc = WrappedComponent => {
       const newProps = {
         name: {
           value: this.state.name,
-          onChange: this.handleNameChange
+          // onChange: this.handleNameChange
         }
       };
 
@@ -81,7 +81,7 @@ const ppHoc = WrappedComponent => {
         commonProps,
         newProps.name,
         {
-          // ref: this.proc.bind(this) // call child methods by ref, breaks after onChange
+          ref: this.proc.bind(this) // call child methods by ref, breaks after onChange
         }
       );
 
