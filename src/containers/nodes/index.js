@@ -31,14 +31,23 @@ class Spawner extends React.Component {
   handleOnClickRemove() {
     this.props.addNode(-1);
   }
+  createMarkup(props) {
+    if(props.spawnNumber < 5) {
+      return {__html: `<p>under 5</p><p>total ${props.spawnNumber}</p>`};
+    }
+    return {__html: `<p>over 5</p>`};
+  }
   render() {
     this.instantiatedEls = [];
     for(let i = 0; i < this.props.spawnNumber; i++) {
-      this.instantiatedEls.push(React.createElement(
+      const created = React.createElement(
         DummyLi,
         {key:i},
         i,
-      ));
+      );
+      if(React.isValidElement(created)) {
+        this.instantiatedEls.push(created);
+      }
     }
 
     const spawned = React.createElement(
@@ -52,6 +61,7 @@ class Spawner extends React.Component {
       <div>
         <button onClick={this.handleOnClickAdd}>Instantiate</button>
         <button onClick={this.handleOnClickRemove}>Kill</button>
+        <div dangerouslySetInnerHTML={this.createMarkup(this.props)} />
         {spawned}
         <pre>
         {JSON.stringify(this.context, null, 4 )}
